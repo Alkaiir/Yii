@@ -93,3 +93,28 @@ public function beforeSave($insert)
     }
 ```
 
+# Request Controller
+
+```
+public function actionIndex()
+    {
+        if (Yii::$app->user->identity->isAdmin()) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => Request::find(),
+
+            ]);
+        } else {
+            $dataProvider = new ActiveDataProvider([
+                'query' => Request::find()->where(['user_id' => Yii::$app->user->identity->id])
+            ]);
+        }
+
+
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+```
+
