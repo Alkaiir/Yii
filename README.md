@@ -1,4 +1,4 @@
-
+# Web Config
 ```
 'language' => 'ru',
 ```
