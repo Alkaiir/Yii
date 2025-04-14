@@ -64,3 +64,23 @@ public static function findIdentity($id)
         return $this->password === md5($password);
     }
 ```
+
+```
+ public function rules()
+    {
+        return [
+            [['full_name', 'phone', 'email', 'username', 'password'], 'required'],
+            [['role'], 'string'],
+            [['full_name', 'email', 'username'], 'string', 'max' => 100],
+            [['phone'], 'string', 'max' => 20],
+            [['password'], 'string', 'max' => 255, 'min' => 6],
+            [['username'], 'unique'],
+            ['role', 'default', 'value' => 'user'],
+            ['email', 'email'],
+            ['username', 'match', 'pattern' => '/^[A-z]\w*$/i'],
+            ['full_name', 'match', 'pattern' => '/^[А-яЁё -]*$/u'],
+            ['phone', 'match', 'pattern' => '/^\+?7\(\d{3}\)-\d{3}\-\d{2}\-\d{2}$/'],
+        ];
+    }
+```
+
