@@ -27,7 +27,7 @@ $config['modules']['debug'] = [
     ];
 ```
 
-#User Model
+# User Model
 ```
 public static function findIdentity($id)
     {
