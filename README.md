@@ -66,6 +66,15 @@ public static function findIdentity($id)
 ```
 
 ```
+public function beforeSave($insert)
+    {
+        $this->password = md5($this->password);
+        return parent::beforeSave($insert);
+
+    }
+```
+
+```
  public function rules()
     {
         return [
